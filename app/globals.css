@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@import "tailwindcss";
+
+/* ============================================================
+   SATCORE SOLUTIONS
+   SOFTWARE AND TECHNOLOGY CORE SOLUTIONS
+
+   Global Brand System · Tailwind CSS v4
+   Tema oscuro por defecto
+
+   Tagline:
+   Soluciones digitales seguras, accesibles y funcionales
+   para todos.
+   ============================================================ */
+
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+
+:root {
+  /* ----- Brand colors ----- */
+  --color-brand-primary: #132a8e;
+  --color-brand-secondary: #1bff3c;
+
+  /* ----- Brand neutrals ----- */
+  --color-white: #ffffff;
+  --color-gray-light: #f6f9fc;
+  --color-gray-medium: #6b7280;
+  --color-gray-dark: #1f2937;
+  --color-black-soft: #0a0a0a;
+
+  /* ----- Accent colors (usar con moderación) ----- */
+  --color-accent-coral: #ff6b6b;
+  --color-accent-yellow: #ffd93d;
+  --color-accent-success: #22c55e;
+
+  /* ----- Semantic colors ----- */
+  --color-success: #22c55e;
+  --color-warning: #ffd93d;
+  --color-danger: #ff6b6b;
+  --color-info: #132a8e;
+
+  /* ==========================================================
+     DARK MODE (por defecto)
+     ========================================================== */
+
+  --background: #0a0a0a;
+  --foreground: #e5e7eb;
+
+  --surface: #0f1330;
+  --surface-secondary: #161c42;
+  --field: #0b0e24;
+
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+
+  --border: #222b63;
+  --border-strong: #33408f;
+
+  --focus: #1bff3c;
+
+  /* ----- Documento (vista previa en pantalla) ----- */
+  --paper-bg: #0d1128;
+  --paper-fg: #f3f4f6;
+  --paper-muted: #9ca3af;
+  --paper-line: #232c66;
+  --paper-accent: #1bff3c;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   2. TAILWIND THEME (utilidades: bg-bg, text-fg, border-line…)
+   ============================================================ */
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand: var(--color-brand-primary);
+  --color-accent: var(--color-brand-secondary);
+  --color-bg: var(--background);
+  --color-fg: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-secondary);
+  --color-field: var(--field);
+  --color-muted: var(--text-muted);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+  --color-danger-ui: var(--color-danger);
+
+  --color-paper: var(--paper-bg);
+  --color-paper-fg: var(--paper-fg);
+  --color-paper-muted: var(--paper-muted);
+  --color-paper-line: var(--paper-line);
+  --color-paper-accent: var(--paper-accent);
+}
+
+/* ============================================================
+   3. BASE
+   ============================================================ */
+
+@layer base {
+  html {
+    background: var(--background);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background:
+      radial-gradient(1200px 500px at 85% -10%, rgb(19 42 142 / 0.35), transparent 60%),
+      var(--background);
+    color: var(--foreground);
+  }
+
+  ::selection {
+    background: var(--color-brand-secondary);
+    color: #0a0a0a;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+
+  input[type="date"] {
+    color-scheme: dark;
+  }
+}
+
+/* ============================================================
+   4. IMPRESIÓN / PDF
+   El documento se imprime sobre fondo blanco.
+   ============================================================ */
+
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+@media print {
+  :root {
+    --background: #ffffff;
+    --foreground: #111827;
+    --paper-bg: #ffffff;
+    --paper-fg: #111827;
+    --paper-muted: #6b7280;
+    --paper-line: #e5e7eb;
+    --paper-accent: #132a8e;
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827;
+  }
+
+  .receipt-paper {
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
