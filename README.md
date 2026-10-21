@@ -1,6 +1,6 @@
  <div align="center">
 
-<img src="./public/satcore-logo.png" alt="SatCore Solutions" width="220" />
+<img src="./public/logo.png" alt="SatCore Solutions" width="220" />
 
 # Generador de recibos
 
